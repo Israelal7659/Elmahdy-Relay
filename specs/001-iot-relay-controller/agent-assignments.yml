@@ -1,0 +1,279 @@
+# Agent Assignments
+# Feature: 001-iot-relay-controller (Elmahdy Relay IoT Smart Controller)
+# Generated: 2026-05-02
+# Command: /speckit-agent-assign-assign
+
+agents_scanned:
+  - name: "Embedded Firmware Engineer"
+    source: "project"
+    description: "Specialist in bare-metal and RTOS firmware - ESP32/ESP-IDF, PlatformIO, Arduino, ARM Cortex-M, STM32 HAL/LL, Nordic nRF5/nRF Connect SDK, FreeRTOS, Zephyr"
+  - name: "Frontend Developer"
+    source: "project"
+    description: "Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization"
+  - name: "DevOps Automator"
+    source: "project"
+    description: "Expert DevOps engineer specializing in infrastructure automation, CI/CD pipeline development, and cloud operations"
+  - name: "Software Architect"
+    source: "project"
+    description: "Expert software architect specializing in system design, domain-driven design, architectural patterns, and technical decision-making"
+
+assignments:
+  # Phase 1: Setup
+  T001:
+    agent: "default"
+    reason: "General project directory creation, no specialized agent needed"
+  T002:
+    agent: "Embedded Firmware Engineer"
+    reason: "PlatformIO board config, ESP8266 dependencies, and build flags"
+  T003:
+    agent: "Embedded Firmware Engineer"
+    reason: "Compile-time constants, GPIO pin definitions, hardware mapping"
+  T004:
+    agent: "DevOps Automator"
+    reason: "Shell script for web asset minification tooling"
+  T005:
+    agent: "DevOps Automator"
+    reason: "Full production build automation script"
+
+  # Phase 2: Foundational
+  T006:
+    agent: "Embedded Firmware Engineer"
+    reason: "LittleFS atomic writes, CRC32 verification, embedded config storage"
+  T007:
+    agent: "Embedded Firmware Engineer"
+    reason: "GPIO init, relay state management, interlock enforcement, pulse mode"
+  T008:
+    agent: "Embedded Firmware Engineer"
+    reason: "ESPAsyncWebServer WebSocket handler, JSON message parsing, broadcast"
+  T009:
+    agent: "Embedded Firmware Engineer"
+    reason: "ESPAsyncWebServer setup, static file serving, gzip, CORS headers"
+  T010:
+    agent: "Embedded Firmware Engineer"
+    reason: "Arduino setup()/loop() orchestration, module initialization order"
+
+  # Phase 3: US1 - WiFi Setup
+  T011:
+    agent: "Embedded Firmware Engineer"
+    reason: "WiFi AP+STA mode, captive portal, DNSServer, auto-reconnect"
+  T012:
+    agent: "Embedded Firmware Engineer"
+    reason: "ESP web server REST route handlers for WiFi scan/config"
+  T013:
+    agent: "Frontend Developer"
+    reason: "Single-page HTML structure with tab navigation, mobile-first layout"
+  T014:
+    agent: "Frontend Developer"
+    reason: "CSS dark theme, RTL support via [dir=rtl], responsive breakpoints"
+  T015:
+    agent: "Frontend Developer"
+    reason: "Vanilla ES5 JavaScript, WebSocket client, DOM manipulation helpers"
+
+  # Phase 4: US2 - Dashboard
+  T016:
+    agent: "Embedded Firmware Engineer"
+    reason: "Status and relay control API route handlers on ESP"
+  T017:
+    agent: "Frontend Developer"
+    reason: "Relay cards with toggle switches, system info bar UI"
+  T018:
+    agent: "Frontend Developer"
+    reason: "WebSocket relay commands, state update handling, toggle events"
+
+  # Phase 5: US3 - Relay Config
+  T019:
+    agent: "Embedded Firmware Engineer"
+    reason: "Relay config endpoints with GPIO validation and persistence"
+  T020:
+    agent: "Frontend Developer"
+    reason: "Dynamic per-channel forms, GPIO dropdown, warning modal"
+  T021:
+    agent: "Frontend Developer"
+    reason: "Dynamic form generation, GPIO conflict validation, save logic"
+
+  # Phase 6: US8 - Language
+  T022:
+    agent: "Frontend Developer"
+    reason: "Arabic language pack JSON with all UI strings"
+  T023:
+    agent: "Frontend Developer"
+    reason: "English language pack JSON matching Arabic keys"
+  T024:
+    agent: "Embedded Firmware Engineer"
+    reason: "LittleFS language pack loading and string lookup"
+  T025:
+    agent: "Embedded Firmware Engineer"
+    reason: "REST endpoint serving language JSON from LittleFS"
+  T026:
+    agent: "Frontend Developer"
+    reason: "Language toggle button, DOM text replacement, dir attribute switching"
+
+  # Phase 7: US4 - MQTT
+  T027:
+    agent: "Embedded Firmware Engineer"
+    reason: "AsyncMqttClient connect/subscribe/publish, LWT, exponential backoff"
+  T028:
+    agent: "Embedded Firmware Engineer"
+    reason: "Home Assistant MQTT auto-discovery retained JSON payloads"
+  T029:
+    agent: "Embedded Firmware Engineer"
+    reason: "MQTT config REST endpoints, save/load broker settings"
+  T030:
+    agent: "Frontend Developer"
+    reason: "MQTT settings form: broker, port, auth, prefix, status indicator"
+  T031:
+    agent: "Frontend Developer"
+    reason: "MQTT form load/save, connection status display from WebSocket"
+
+  # Phase 8: US5 - Countdown Timer
+  T032:
+    agent: "Embedded Firmware Engineer"
+    reason: "millis-based countdown engine, persistence, resume on boot"
+  T033:
+    agent: "Embedded Firmware Engineer"
+    reason: "Timer CRUD REST endpoints per rest-api.md contract"
+  T034:
+    agent: "Embedded Firmware Engineer"
+    reason: "WebSocket periodic remaining time broadcast every 1 second"
+  T035:
+    agent: "Frontend Developer"
+    reason: "Countdown creation form, active timer list with cancel buttons"
+  T036:
+    agent: "Frontend Developer"
+    reason: "Timer countdown display, WebSocket update handling, cancel handler"
+
+  # Phase 9: US6 - Scheduled Timer
+  T037:
+    agent: "Embedded Firmware Engineer"
+    reason: "NTP sync via configTime(), timezone offset, sync status tracking"
+  T038:
+    agent: "Embedded Firmware Engineer"
+    reason: "Scheduled timer repeat modes, day mask, NTP availability check"
+  T039:
+    agent: "Embedded Firmware Engineer"
+    reason: "Scheduled timer REST endpoint with hour/minute/repeatMode/dayMask"
+  T040:
+    agent: "Frontend Developer"
+    reason: "Time picker, repeat mode selector, custom day checkboxes"
+  T041:
+    agent: "Frontend Developer"
+    reason: "Scheduled timer form handling, repeat mode toggling, day mask UI"
+
+  # Phase 10: US12 - Interlock/Pulse
+  T042:
+    agent: "Embedded Firmware Engineer"
+    reason: "Interlock group enforcement across all command sources"
+  T043:
+    agent: "Embedded Firmware Engineer"
+    reason: "Pulse mode with millis-based auto-OFF, pulseEndTime tracking"
+  T044:
+    agent: "Frontend Developer"
+    reason: "Interlock group and pulse duration fields in relay settings UI/JS"
+
+  # Phase 11: US7 - Scenes
+  T045:
+    agent: "Embedded Firmware Engineer"
+    reason: "Scene CRUD, case-insensitive naming, activate via RelayController"
+  T046:
+    agent: "Embedded Firmware Engineer"
+    reason: "Scene REST endpoints per rest-api.md contract"
+  T047:
+    agent: "Embedded Firmware Engineer"
+    reason: "MQTT scene topic subscription and activation"
+  T048:
+    agent: "Embedded Firmware Engineer"
+    reason: "WebSocket scene command parsing and SceneManager integration"
+  T049:
+    agent: "Frontend Developer"
+    reason: "Scene create form, scene list, dashboard quick-trigger buttons"
+  T050:
+    agent: "Frontend Developer"
+    reason: "Scene CRUD form handling, activate/delete button handlers"
+
+  # Phase 12: US9 - Buzzer/LED/Reset
+  T051:
+    agent: "Embedded Firmware Engineer"
+    reason: "Buzzer GPIO beep patterns, anti-spam 100ms minimum"
+  T052:
+    agent: "Embedded Firmware Engineer"
+    reason: "LED status patterns: fast blink, slow blink, solid"
+  T053:
+    agent: "Embedded Firmware Engineer"
+    reason: "GPIO input polling, press duration detection, factory reset"
+  T054:
+    agent: "Frontend Developer"
+    reason: "System settings UI: buzzer/LED/reset enable toggles, pin fields"
+  T055:
+    agent: "Embedded Firmware Engineer"
+    reason: "System config REST endpoints for hardware settings"
+  T056:
+    agent: "Embedded Firmware Engineer"
+    reason: "Cross-module buzzer integration in main.cpp"
+
+  # Phase 13: US10 - OTA
+  T057:
+    agent: "Embedded Firmware Engineer"
+    reason: "ESPAsyncWebServer onUpload, Update class, size validation"
+  T058:
+    agent: "Embedded Firmware Engineer"
+    reason: "Multipart .bin upload endpoint with progress WebSocket broadcast"
+  T059:
+    agent: "Frontend Developer"
+    reason: "OTA file picker, upload button, progress bar UI"
+  T060:
+    agent: "Frontend Developer"
+    reason: "XMLHttpRequest file upload with progress event, feedback display"
+
+  # Phase 14: US11 - PWA
+  T061:
+    agent: "Frontend Developer"
+    reason: "PWA manifest.json with app metadata, icons, display mode"
+  T062:
+    agent: "Frontend Developer"
+    reason: "Service worker with cache-first strategy for app shell"
+  T063:
+    agent: "Frontend Developer"
+    reason: "PWA icon generation (48x48 and 192x192 PNG)"
+  T064:
+    agent: "Frontend Developer"
+    reason: "Manifest link tag and service worker registration in HTML"
+
+  # Phase 15: US13 - Backup/Restore
+  T065:
+    agent: "Embedded Firmware Engineer"
+    reason: "Config aggregation for backup, file upload parsing for restore"
+  T066:
+    agent: "Frontend Developer"
+    reason: "Backup download button, restore file picker and upload button"
+  T067:
+    agent: "Frontend Developer"
+    reason: "Backup download trigger, restore upload with confirmation"
+
+  # Phase 16: Polish
+  T068:
+    agent: "Frontend Developer"
+    reason: "About tab with branding, contact info, firmware version display"
+  T069:
+    agent: "Embedded Firmware Engineer"
+    reason: "System reboot and factory reset REST endpoints"
+  T070:
+    agent: "Embedded Firmware Engineer"
+    reason: "mDNS discovery registration with configurable hostname"
+  T071:
+    agent: "Embedded Firmware Engineer"
+    reason: "WebSocket periodic system info broadcast every 5 seconds"
+  T072:
+    agent: "Embedded Firmware Engineer"
+    reason: "configChanged WebSocket event on config section update"
+  T073:
+    agent: "DevOps Automator"
+    reason: "Verify minification, gzip, and LittleFS image size < 512KB"
+  T074:
+    agent: "Embedded Firmware Engineer"
+    reason: "Verify firmware binary size < 500KB with pio run"
+  T075:
+    agent: "default"
+    reason: "End-to-end integration validation across all user stories"
+  T076:
+    agent: "Frontend Developer"
+    reason: "Review and finalize error messages in both language packs"

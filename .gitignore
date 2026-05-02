@@ -1,0 +1,22 @@
+# PlatformIO build artifacts
+firmware/.pio/
+firmware/.pioenvs/
+firmware/.clang_complete
+firmware/.gcc-flags.json
+
+# Minified/compressed web assets (build artifacts)
+firmware/data/www/*.min.*
+firmware/data/www/*.gz
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+*.swp
+*~
