@@ -132,6 +132,13 @@
   "scene.delete": "Delete",
   "scene.noScenes": "No scenes configured",
   "scene.limitReached": "Maximum 10 scenes reached",
+  "scene.scheduleEnabled": "Auto Schedule",
+  "scene.scheduleTime": "Activation Time",
+  "scene.scheduleRepeat": "Repeat",
+  "scene.nameRequired": "Name required",
+  "scene.confirmDelete": "Delete this scene?",
+  "scene.saved": "Saved",
+  "scene.saveFailed": "Save failed",
 
   "system.title": "System Settings",
   "system.hardware": "Hardware",

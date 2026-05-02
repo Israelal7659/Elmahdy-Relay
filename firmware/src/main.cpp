@@ -240,6 +240,9 @@ void loop() {
     // Fires expired countdown timers; calls onTick ~every 1 s for WS broadcast.
     timerEngine.tick();
 
+    // ── SceneManager — scheduled scene firing ────────────────────────────────
+    sceneManager.tick();
+
     // ── T051 — Buzzer ─────────────────────────────────────────────────────────
     buzzerController.tick();
 

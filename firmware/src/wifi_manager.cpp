@@ -142,8 +142,8 @@ void WiFiManager::scan() {
     // WIFI_SCAN_ASYNC (true) and WIFI_SCAN_FAILED_NEW (true) ensure:
     //   - scan runs entirely in the background (non-blocking).
     //   - a new scan cancels any in-progress scan cleanly.
-    WiFi.scanNetworks(/*async=*/true, /*show_hidden=*/false);
-    Serial.println(F("[WiFi] Async scan triggered"));
+    WiFi.scanNetworks(/*async=*/false, /*show_hidden=*/false);
+    Serial.println(F("[WiFi] Sync scan complete"));
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

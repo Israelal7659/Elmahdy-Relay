@@ -132,6 +132,13 @@
   "scene.delete": "حذف",
   "scene.noScenes": "لا توجد مشاهد",
   "scene.limitReached": "الحد الأقصى 10 مشاهد",
+  "scene.scheduleEnabled": "جدولة تلقائية",
+  "scene.scheduleTime": "وقت التفعيل",
+  "scene.scheduleRepeat": "التكرار",
+  "scene.nameRequired": "الاسم مطلوب",
+  "scene.confirmDelete": "حذف هذا المشهد؟",
+  "scene.saved": "تم الحفظ",
+  "scene.saveFailed": "فشل الحفظ",
 
   "system.title": "إعدادات النظام",
   "system.hardware": "الأجهزة",

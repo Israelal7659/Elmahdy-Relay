@@ -9,13 +9,16 @@ class RelayController;
 
 class SceneManager {
 public:
-    SceneManager() : _config(nullptr), _relay(nullptr) {}
+    SceneManager() : _config(nullptr), _relay(nullptr), _lastScheduledMinEpoch(0) {}
     ~SceneManager() = default;
 
     void begin(ConfigManager& config, RelayController& relay);
 
     // Returns false if name already exists (case-insensitive) or limit (10) reached.
-    bool createScene(const char* name, const JsonObject& states);
+    bool createScene(const char* name, const JsonObject& states, JsonObjectConst schedule);
+
+    // Call from loop(); fires NTP-scheduled scenes.
+    void tick();
 
     // Activate a named scene: sets relay channels to stored states.
     // Returns false if scene not found.
@@ -32,6 +35,7 @@ public:
 private:
     ConfigManager*   _config;
     RelayController* _relay;
+    uint32_t         _lastScheduledMinEpoch;
 
     // Returns array index of named scene (case-insensitive), or -1 if not found.
     int _findScene(const char* name) const;

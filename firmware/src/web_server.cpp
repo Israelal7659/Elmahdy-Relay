@@ -749,7 +749,7 @@ void WebServer::registerRoutes() {
 
     // ── GET /api/lang/{code} — serve language pack JSON from LittleFS ────────
     // T025: code must be "ar" or "en"; file lives at /lang_{code}.json in root.
-    _server->on("/api/lang/*", HTTP_GET,
+    _server->on("/api/lang/{}", HTTP_GET,
         [](AsyncWebServerRequest* request) {
             String code = request->pathArg(0);
             code.toLowerCase();
@@ -1060,7 +1060,10 @@ void WebServer::registerRoutes() {
                 addCorsHeaders(resp); request->send(resp); return;
             }
             JsonObject states = doc["states"].as<JsonObject>();
-            if (_sceneManager->createScene(name, states)) {
+            JsonObjectConst schedObj = doc["schedule"].is<JsonObjectConst>()
+                ? doc["schedule"].as<JsonObjectConst>()
+                : JsonObjectConst();
+            if (_sceneManager->createScene(name, states, schedObj)) {
                 if (_ws) { _ws->broadcastConfigChanged("scenes"); }
                 AsyncWebServerResponse* resp =
                     request->beginResponse(200, "application/json",
