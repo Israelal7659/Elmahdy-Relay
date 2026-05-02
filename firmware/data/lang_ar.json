@@ -146,6 +146,8 @@
   "system.dangerZone": "منطقة الخطر",
   "system.dangerHint": "هذه الإجراءات لا يمكن التراجع عنها",
   "system.buzzerEnabled": "البزر",
+  "system.buzzerTest": "اختبار",
+  "system.buzzerTesting": "جارٍ...",
   "system.buzzerPin": "رقم GPIO للبزر",
   "system.ledEnabled": "مؤشر LED",
   "system.resetEnabled": "زر الإعادة",

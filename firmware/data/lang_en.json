@@ -146,6 +146,8 @@
   "system.dangerZone": "Danger Zone",
   "system.dangerHint": "These actions cannot be undone",
   "system.buzzerEnabled": "Buzzer",
+  "system.buzzerTest": "Test",
+  "system.buzzerTesting": "Testing…",
   "system.buzzerPin": "Buzzer GPIO",
   "system.ledEnabled": "Status LED",
   "system.resetEnabled": "Reset Button",

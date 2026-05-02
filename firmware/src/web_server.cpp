@@ -9,6 +9,7 @@
 #include "wifi_manager.h"
 #include "timer_engine.h"
 #include "scene_manager.h"
+#include "buzzer_controller.h"
 
 #include <ArduinoJson.h>
 #include <LittleFS.h>
@@ -1129,6 +1130,17 @@ void WebServer::registerRoutes() {
                                            "{\"error\":\"Scene not found\"}");
                 addCorsHeaders(resp); request->send(resp);
             }
+        }
+    );
+
+    // ── POST /api/system/buzzer-test — fire one short beep ───────────────────
+    _server->on("/api/system/buzzer-test", HTTP_POST,
+        [](AsyncWebServerRequest* request) {
+            buzzerController.beepShort();
+            AsyncWebServerResponse* resp =
+                request->beginResponse(200, "application/json", "{\"success\":true}");
+            resp->addHeader("Access-Control-Allow-Origin", "*");
+            request->send(resp);
         }
     );
 

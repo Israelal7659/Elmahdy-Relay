@@ -193,6 +193,11 @@ void setup() {
     Serial.println(F("[main] Initialising BuzzerController..."));
     buzzerController.begin(configManager);
 
+    // Wire relay state change → short buzzer beep
+    relayController.setOnStateChange([](uint8_t /*id*/, bool /*state*/) {
+        buzzerController.beepShort();
+    });
+
     // ── T052 — LEDController ──────────────────────────────────────────────────
     Serial.println(F("[main] Initialising LEDController..."));
     ledController.begin(configManager);
