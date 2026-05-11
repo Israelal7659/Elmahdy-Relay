@@ -33,6 +33,7 @@ Thumbs.db
 .claude/
 .codex/
 .specify/
+specs/
 constitution-prompt.txt
 specify-prompt.txt
 AGENTS.md

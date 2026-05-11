@@ -16,7 +16,8 @@
 #include <LittleFS.h>
 #include <Ticker.h>
 #include <string.h>
-// Update (ESP8266 Updater) is part of the core — no header needed
+#include <WiFiUdp.h>
+#include <Updater.h>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -1487,9 +1488,21 @@ void WebServer::registerRoutes() {
         [](AsyncWebServerRequest* request, String filename,
            size_t index, uint8_t* data, size_t len, bool final) {
             if (index == 0) {
-                Serial.printf_P(PSTR("[OTA] Start: %s\n"), filename.c_str());
+                Serial.printf_P(PSTR("[OTA] Start: %s (%u bytes)\n"),
+                                filename.c_str(),
+                                static_cast<unsigned>(request->contentLength()));
                 _otaError = false;
-                if (!Update.begin(ESP.getFreeSketchSpace())) {
+                // Use content-length for exact size, fall back to max sketch space
+                uint32_t maxSketchSpace =
+                    (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
+                uint32_t updateSize = request->contentLength();
+                if (updateSize == 0 || updateSize > maxSketchSpace) {
+                    updateSize = maxSketchSpace;
+                }
+                // Disable WiFi-related interrupts to stabilize OTA writes
+                WiFiUDP::stopAll();
+                Update.runAsync(true);
+                if (!Update.begin(updateSize)) {
                     _otaError = true;
                     Update.printError(Serial);
                 }
@@ -1497,13 +1510,19 @@ void WebServer::registerRoutes() {
             if (!_otaError && len) {
                 if (Update.write(data, len) != len) {
                     _otaError = true;
+                    Update.printError(Serial);
                 }
+                // Yield to prevent WDT reset during large uploads
+                yield();
             }
             if (final) {
                 if (!_otaError && Update.end(true)) {
                     Serial.printf_P(PSTR("[OTA] Success: %u bytes\n"),
                                     static_cast<unsigned>(index + len));
                 } else if (_otaError) {
+                    Update.printError(Serial);
+                } else {
+                    _otaError = true;
                     Update.printError(Serial);
                 }
             }
